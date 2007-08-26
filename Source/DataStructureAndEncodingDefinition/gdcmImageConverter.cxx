@@ -1,0 +1,46 @@
+/*=========================================================================
+
+  Program: GDCM (Grass Root DICOM). A DICOM library
+  Module:  $URL$
+
+  Copyright (c) 2006 Mathieu Malaterre
+  Copyright (c) 1993-2005 CREATIS
+  All rights reserved.
+  See Copyright.txt or http://gdcm.sourceforge.net/Copyright.html for details.
+
+     This software is distributed WITHOUT ANY WARRANTY; without even
+     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+     PURPOSE.  See the above copyright notice for more information.
+
+=========================================================================*/
+#include "gdcmImageConverter.h"
+#include "gdcmImage.h"
+
+namespace gdcm
+{
+
+ImageConverter::ImageConverter()
+{
+  Output = new Image;
+}
+
+ImageConverter::~ImageConverter()
+{
+  delete Output;
+}
+
+void ImageConverter::SetInput(Image const &input)
+{
+  Input = const_cast<Image*>(&input);
+}
+
+const Image& ImageConverter::GetOuput() const
+{
+  return *Output;
+}
+
+void ImageConverter::Convert()
+{
+}
+
+} // end namespace gdcm
