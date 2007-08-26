@@ -1,0 +1,30 @@
+IF(NOT GETOPT_NAMESPACE)
+  SET(GETOPT_NAMESPACE "GETOPT")
+  SET(GETOPT_STANDALONE 1)
+ENDIF(NOT GETOPT_NAMESPACE)
+# In all cases:
+STRING(TOLOWER ${GETOPT_NAMESPACE} GETOPT_LIBRARY_NAME)
+
+PROJECT(${GETOPT_NAMESPACE} C)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.2)
+
+SET(BUILD_SHARED_LIBS OFF)
+
+SET(GETOPT_SRCS
+  getopt.c
+  getopt_long.c
+  )
+#ADD_DEFINITIONS(-DGETOPT_API)
+
+#INCLUDE_DIRECTORIES(BEFORE
+#  ${CMAKE_CURRENT_SOURCE_DIR}
+#  )
+
+# Only build this lib static. On most unix system
+# we will be using the standart getopt
+# so this liob will be for the poor Win32 user (those
+# guys really need help)
+ADD_LIBRARY(${GETOPT_LIBRARY_NAME} STATIC ${GETOPT_SRCS})
+
+ADD_EXECUTABLE(ex_getopt ex_getopt.c)
+TARGET_LINK_LIBRARIES(ex_getopt ${GETOPT_LIBRARY_NAME})

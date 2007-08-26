@@ -1,0 +1,35 @@
+# Wrapping and stuff
+
+SUBDIRS(Wrapping)
+# Do jpeg (8,12, 16 lossly lossless). From ijg
+SET(JPEG_NAMESPACE "GDCMJPEG")
+SUBDIRS(jpeg)
+
+# Do expat
+SET(EXPAT_NAMESPACE "GDCMEXPAT")
+SUBDIRS(expat)
+
+# Do openjpeg (jpeg2000 implementation)
+SET(OPENJPEG_NAMESPACE "GDCMOPENJPEG")
+SUBDIRS(openjpeg)
+
+# Do jpegls (JPEG-LS aka near lossless implementation)
+SET(JPEGLS_NAMESPACE "GDCMJPEGLS")
+SUBDIRS(jpegls)
+
+# Do md5
+SET(MD5_NAMESPACE "GDCMMD5")
+SUBDIRS(md5)
+
+# Do zlib
+SET(ZLIB_NAMESPACE "GDCMZLIB")
+SUBDIRS(zlib)
+
+# Do getopt
+IF(WIN32 AND NOT CYGWIN)
+SET(GETOPT_NAMESPACE "GDCMGETOPT")
+SUBDIRS(getopt)
+ENDIF(WIN32 AND NOT CYGWIN)
+
+SUBDIRS(doxygen)
+
